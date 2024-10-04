@@ -1,0 +1,421 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Estilos generales para el menú */
+.sidebar {
+    display: flex; /* Utilizando Flexbox */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 200px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+}
+
+.sidebar .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.menu-toggle {
+    display: none; /* Oculto en pantallas grandes */
+    cursor: pointer;
+}
+
+.menu-toggle i {
+    font-size: 28px;
+    color: white;
+}
+
+/* Estilos del menú */
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    flex: 1;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    transition: filter 0.5s ease;
+}
+
+.card .info {
+    padding: 15px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #16A085;
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover img {
+    filter: grayscale(0%);
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Estilos para el logo */
+.logo-img {
+    width: 100%; /* Para que ocupe el espacio del contenedor "logo" */
+    height: auto;
+    max-width: 150px; /* Limita el tamaño del logo */
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: grid; /* Usando Grid para acomodar el menú en la parte superior */
+        grid-template-columns: 1fr;
+        align-items: center; /* Alinea el logo y el botón de hamburguesa verticalmente */
+    }
+
+    .logo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 10px;
+    }
+
+    .logo-img {
+        max-width: 65px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón hamburguesa */
+        align-self: flex-end; /* Alinear el botón a la derecha */
+    }
+
+
+    .sidebar ul {
+        display: none; /* Ocultar el menú por defecto */
+        flex-direction: column;
+        background-color: #333;
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .sidebar ul.active {
+        display: flex; /* Mostrar el menú cuando se haga clic */
+    }
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+    .content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+}
+
+/* Efecto de expansión y fondo en la sección de Historia de las Katanas */
+.section-history {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px;
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease; /* Transición suave para la expansión */
+}
+
+/* Contenido de la historia */
+.history-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease; /* Transición para la expansión */
+}
+
+/* Centrar el título */
+.section-history h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
+    text-align: center;
+}
+
+/* Estilo del texto */
+.section-history p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Expansión al pasar el mouse */
+.section-history:hover {
+    transform: scale(1.05); /* Expande ligeramente la sección */
+}
+
+.history-content:hover {
+    transform: scale(1.05); /* Expande ligeramente el contenido */
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .section-history {
+        padding: 40px 15px;
+        background-attachment: scroll;
+    }
+
+    .section-history h1 {
+        font-size: 28px;
+    }
+
+    .section-history p {
+        font-size: 16px;
+    }
+}
+
+/* Estilos para la segunda sección (Tienda de Katanas) */
+.section-shop {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.shop-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-shop h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.section-shop p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.shop-features {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column; /* Hace que los elementos se coloquen uno debajo de otro */
+    justify-content: space-between; /* Espacía el contenido para que el ícono quede abajo */
+    align-items: center; /* Centra los elementos horizontalmente */
+    transition: transform 2.5s ease;
+    transform-style: preserve-3d;
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.feature p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Estilo para los íconos */
+.feature i {
+    display: block;
+    font-size: 30px;
+    color: #16A085;
+    margin-top: 15px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* Efecto de giro de 360 grados */
+.feature:hover {
+    transform: rotateY(360deg); /* Efecto de giro */
+}
+
+/* Cambiar color del ícono al pasar el mouse */
+.feature:hover i {
+    color: #1ABC9C;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .shop-features {
+        flex-direction: column;
+    }
+
+    .feature {
+        margin: 20px 0;
+    }
+}
+
+/* Estilo general del footer */
+.footer {
+    background-color: #2c2c2c; /* Un tono diferente al del navbar, pero en la misma gama */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    width: 100%; /* Ocupa todo el ancho de la pantalla en pantallas pequeñas */
+}
+
+.footer p {
+    margin-bottom: 10px; /* Espacio entre el texto de contacto y los íconos */
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1ABC9C; /* Cambia el color cuando se pasa el mouse */
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 768px) {
+    .footer {
+        width: 200px; /* El mismo ancho que el menú lateral (navbar) */
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: auto;
+        background-color: #3c3c3c; /* Un tono ligeramente diferente para mayor contraste */
+    }
+
+    /* Asegurar que el texto de contacto se ajuste correctamente */
+    .footer p {
+        font-size: 14px; /* Reducimos el tamaño del texto para pantallas grandes */
+        word-wrap: break-word; /* Para que el texto no se salga del contenedor */
+        margin-bottom: 5px;
+    }
+}
+
+/* Estilo para el título de la Galería */
+#gallery h1 {
+    text-align: center; /* Alinea el texto al centro */
+    font-size: 36px; /* Ajusta el tamaño si es necesario */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-family: 'Noto Serif JP', serif; 
+}
+
